@@ -75,7 +75,7 @@ function render(tasks) {
     for (const [className, label, handler] of [
       ['toggle-task', task.completed ? 'Mark incomplete' : 'Mark complete', () => toggleTask(task)],
       ['edit-task secondary', 'Edit', () => editTask(task.id)],
-      ['delete-task', 'Delete', () => deleteTask(task.id)]
+      ['delete-task', 'Delete', event => deleteTask(task.id, event.currentTarget)]
     ]) {
       const button = document.createElement('button');
       button.type = 'button';
@@ -134,8 +134,25 @@ function toggleTask(task) {
   return run(() => mutate(`?id=eq.${encodeURIComponent(task.id)}`, 'PATCH', { completed: !task.completed }, 'Task status updated.'));
 }
 
-function deleteTask(id) {
-  if (!window.confirm('Delete this task?')) return;
+function deleteTask(id, button) {
+  if (busy) return;
+  if (button.dataset.confirm !== 'true') {
+    button.dataset.confirm = 'true';
+    button.textContent = 'Confirm delete';
+    const cancelDelete = document.createElement('button');
+    cancelDelete.type = 'button';
+    cancelDelete.className = 'secondary';
+    cancelDelete.textContent = 'Keep task';
+    cancelDelete.addEventListener('click', () => {
+      delete button.dataset.confirm;
+      button.textContent = 'Delete';
+      cancelDelete.remove();
+      message('Deletion cancelled.');
+    });
+    button.after(cancelDelete);
+    message('Choose Confirm delete to remove this task, or Keep task to cancel.');
+    return;
+  }
   return run(() => mutate(`?id=eq.${encodeURIComponent(id)}`, 'DELETE', undefined, 'Task deleted.', editingId === id));
 }
 
