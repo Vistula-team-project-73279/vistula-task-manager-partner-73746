@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><p class="eyebrow">TEAM PROJECT · IT</p><h1>Task Manager</h1><p>A little structure for your next big idea.</p><p class="student">Student ID: <strong id="student-id">73746</strong></p></header>
+    <p id="status-message" role="status" aria-live="polite">Connecting to your tasks…</p>
+    <div class="workspace">
+      <section class="panel" aria-labelledby="form-heading">
+        <h2 id="form-heading">Add a task</h2>
+        <form id="task-form">
+          <fieldset id="task-fields" disabled>
+            <label for="task-title">Title <span aria-hidden="true">*</span></label>
+            <input id="task-title" name="title" required maxlength="300" placeholder="What needs to get done?">
+            <label for="task-description">Description</label>
+            <textarea id="task-description" name="description" rows="5" placeholder="Add a few details (optional)"></textarea>
+            <div class="actions"><button id="task-submit" type="submit">Add task</button><button id="cancel-edit" type="button" class="secondary" hidden>Cancel edit</button></div>
+          </fieldset>
+        </form>
+      </section>
+      <section aria-labelledby="list-heading"><div class="list-heading"><h2 id="list-heading">Your tasks</h2><button id="refresh-tasks" type="button" class="secondary" disabled>Refresh</button></div><div id="task-list" aria-busy="true"></div></section>
+    </div>
+    <footer><span>Public classroom demo · Use test data only.</span><a id="contribution-link" href="contribution.html">Team contribution →</a></footer>
+  </main>
+</body>
+</html>
