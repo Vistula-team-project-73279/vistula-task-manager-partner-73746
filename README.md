@@ -25,8 +25,9 @@ This is a public classroom demonstration. Visitors can read and change all tasks
 
 ## Team collaboration — pending
 
-- Outgoing merged Pull Request to partner's repository: **pending**.
-- Incoming merged Pull Request from partner: **pending**.
+- Outgoing Pull Request: https://github.com/RaufJumshudov73279/vistula-task-manager/pull/1 — **open; awaiting partner review and merge**.
+- Incoming Pull Request from student **73279**: **pending; partner must submit it from their own account**.
+- Partner repository: https://github.com/RaufJumshudov73279/vistula-task-manager
 
 A different student must add `contribution.html` and `contribution.json` to this repository through their own Pull Request. Their JSON must contain their student ID. The repository owner reviews and merges that PR. Student 73746 must also fork the partner's repository and contribute those two files there, with contributorStudentId set to 73746, via a PR that the partner merges.
 
